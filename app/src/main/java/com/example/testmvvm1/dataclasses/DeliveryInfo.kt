@@ -5,6 +5,6 @@ data class DeliveryInfo(
     val deliveryPeriod: DeliveryPeriod,
     val deliveryPrice: Int,
     val minOrderCost: Int,
-    val nearestDeliveryDate: String,
+    val nearestDeliveryDate: String, //need
     val paymentInfo: PaymentInfo
 )

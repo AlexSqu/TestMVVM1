@@ -9,9 +9,9 @@ data class Data(
     val favorite: Boolean,
     val has_case_sale: Boolean,
     val images: List<String>,
-    val name: String,
+    val name: String,  //need
     val offers: Offers,
-    val price: Double,
+    val price: String, //Double, //need
     val seo_name: String,
     val uuid: String
 )

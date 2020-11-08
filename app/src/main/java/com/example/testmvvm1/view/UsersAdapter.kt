@@ -8,11 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testmvvm1.R
 import com.example.testmvvm1.dataclasses.Data
-import com.example.testmvvm1.model.data
+import com.example.testmvvm1.dataclasses.Products
+
 
 
 //адаптер для отображения данных в recyclerview
-class UsersAdapter (private val users: List<data>) : RecyclerView.Adapter<UsersAdapter.ViewHolder>(){
+class UsersAdapter (private val users: Products) : RecyclerView.Adapter<UsersAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var name: TextView? = null
@@ -20,6 +21,8 @@ class UsersAdapter (private val users: List<data>) : RecyclerView.Adapter<UsersA
             name = itemView?.findViewById((R.id.name))
 
         }
+
+
 
     }
 
@@ -30,10 +33,10 @@ class UsersAdapter (private val users: List<data>) : RecyclerView.Adapter<UsersA
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name?.text = users[position].name
+        holder.name?.text = users.data[position].name
 
     }
 
-    override fun getItemCount() = users.size
+    override fun getItemCount() = users.data.size
 
 }

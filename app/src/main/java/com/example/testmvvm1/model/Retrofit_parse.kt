@@ -10,9 +10,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+//const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
-class Retrofit_parse() {
+/*class Retrofit_parse() {
     //реализация ретрофита
     val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
