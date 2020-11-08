@@ -1,5 +1,6 @@
 package com.example.testmvvm1.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -20,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL = "http://www.mocky.io/v2/"
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), UsersAdapter.OnItemClickListener {
 
     lateinit var mViewModel: ViewModelMain
 
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         mViewModel = ViewModelProvider(this).get(ViewModelMain::class.java)
 
-        
+
+
     }
 
     override fun onStart() {
@@ -43,8 +45,15 @@ class MainActivity : AppCompatActivity() {
     private fun showData(users: Products) {
         val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-        recyclerView.adapter = UsersAdapter(users)
+        recyclerView.adapter = UsersAdapter(users, this)
         //данные передаются в адаптер, для формирования данных
+    }
+
+    override fun onItemClick(position: Int) {
+        val intent = Intent(this, InfoProduct::class.java).apply {
+            putExtra("position", position) }
+        startActivity(intent)
+       // Toast.makeText(applicationContext, "$position", Toast.LENGTH_LONG).show()
     }
 
 

@@ -42,8 +42,7 @@ fun retrofitstart(){
             livedata.value = response.body()!!
         }
         override fun onFailure(call: Call<Products>, t: Throwable) {
-            //Toast.makeText(applicationContext, "nono", Toast.LENGTH_LONG).show()
-            //при ошибке открывается второе окно
+
         }
     })
 }

@@ -13,17 +13,27 @@ import com.example.testmvvm1.dataclasses.Products
 
 
 //адаптер для отображения данных в recyclerview
-class UsersAdapter (private val users: Products) : RecyclerView.Adapter<UsersAdapter.ViewHolder>(){
+class UsersAdapter (private val users: Products, private val listener: OnItemClickListener) : RecyclerView.Adapter<UsersAdapter.ViewHolder>(){
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+   inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
         var name: TextView? = null
         init{
             name = itemView?.findViewById((R.id.name))
-
+        }
+        init {
+            itemView.setOnClickListener(this)
         }
 
+        override fun onClick(v: View?) {
+            val position : Int = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
 
-
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +44,8 @@ class UsersAdapter (private val users: Products) : RecyclerView.Adapter<UsersAda
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.name?.text = users.data[position].name
+
+
 
     }
 
